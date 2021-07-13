@@ -26,3 +26,9 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(user.email, email.lower())
+
+    
+    def test_invalid_user_email(self):
+        """Test creating user with no emai raises error"""
+        with self.assertRaises(ValueError):
+            get_user_model().objects.create_user(None, 'test123')
